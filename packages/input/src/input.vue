@@ -73,7 +73,7 @@
           </span>
         </span>
         <i class="el-input__icon"
-          v-if="validateState"
+          v-if="showSuffixValidateState"
           :class="['el-input__validateIcon', validateIcon]">
         </i>
       </span>
@@ -197,6 +197,9 @@
       },
       needStatusIcon() {
         return this.elForm ? this.elForm.statusIcon : false;
+      },
+      showSuffixValidateState() {
+        return this.validateState && this.needStatusIcon;
       },
       validateIcon() {
         return {
@@ -403,7 +406,7 @@
           this.showClear ||
           this.showPassword ||
           this.isWordLimitVisible ||
-          (this.validateState && this.needStatusIcon);
+          this.showSuffixValidateState;
       }
     },
 
